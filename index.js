@@ -137,14 +137,14 @@ class Lambdasian {
   }
 }
 
-const studentOne = new Lambdasian({
+const lambda = new Lambdasian({
   name: 'Victor',
   age: 28,
   location: 'USA'
 })
 
-//console.log('task 3', studentOne);
-//console.log('task 3', studentOne.speak());
+//console.log('task 3', lambda);
+//console.log('task 3', lambda.speak());
 
 /*
   TASK 4
@@ -185,12 +185,12 @@ const hemming = new Instructor({
 });
 
 hemming.demo('python');
-console.log('demo test', hemming.demo('python'));
+//console.log('demo test', hemming.demo('python'));
 
 hemming.grade('Victor', 'redux');
-console.log('grade test', hemming.grade('Victor', 'redux'));
+//console.log('grade test', hemming.grade('Victor', 'redux'));
 
-console.log('task 4', hemming);
+//console.log('task 4', hemming);
 
 /*
   TASK 5
@@ -207,9 +207,45 @@ console.log('task 4', hemming);
         + `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
-class Student {
-   
+class Student extends Lambdasian{
+   constructor(obj){
+     super(obj);
+     this.previousBackground = obj.previousBackground;
+     this.className = obj.className;
+     this.favSubjects = obj.favSubjects;
+   }
+   listSubjects(){
+     return `Loving ${this.favSubjects}`;
+   }
+   PRAssignment(subject){
+    return `${this.name} has submitted a PR for ${subject}`
+   }
+   sprintChallenge(subject){
+    return `${this.name} has begun sprint challenge on ${subject}`
+   }
 }
+
+const vic = new Student({
+  name: 'Victor',
+  age: 28,
+  location: 'USA',
+  previousBackground: 'bartender',
+  className: 'web52',
+  favSubjects: ['Javascript', 'React', 'Redux']
+})
+
+console.log('error', );
+
+vic.listSubjects();
+console.log('sub list:', vic.listSubjects());
+
+vic.PRAssignment(vic.name, 'Redux');
+console.log('assign list:', vic.PRAssignment(vic.name, 'Redux'));
+
+vic.sprintChallenge(vic.name, 'React');
+console.log('sprint:', vic.sprintChallenge('React'));
+
+console.log('task 4', vic);
 
 /*
   TASK 6
