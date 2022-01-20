@@ -62,8 +62,8 @@ class Person {
 
 const me = new Person('Victor', 28)
 
-console.log('task 1', me);
-console.log('task 1', me.toString());
+//console.log('task 1', me);
+//console.log('task 1', me.toString());
 
 /*
   TASK 2
@@ -80,8 +80,39 @@ console.log('task 1', me.toString());
 */
 
 class Car {
-  
+  constructor(model, milesPerGallon){
+    this.model = model;
+    this.milesPerGallon = milesPerGallon;
+    this.tank = 0;
+    this.odometer = 0;
+  }
+  fill(gallons){
+    this.tank = this.tank + gallons;
+  }
+  drive(distance){
+    this.odometer = this.odometer + distance;
+    this.tank = this.tank - (distance / this.milesPerGallon)
+    if((distance / this.milesPerGallon) > this.tank){
+      this.odometer = this.odometer + (this.tank * this.milesPerGallon);
+      this.tank = 0;
+      return `I ran out of fuel at ${this.odometer} miles!`;
+    }
+  }
 }
+
+const toyota = new Car('Toyota', 20);
+
+toyota.fill(10);
+console.log('fill', toyota.tank);
+console.log('fill', toyota.odometer);
+
+toyota.drive(100);
+console.log('dist one', toyota.tank);
+console.log('dist one', toyota.odometer);
+console.log('drive', toyota.drive(300));
+
+console.log('task 2', toyota);
+
 
 /*
   TASK 3
