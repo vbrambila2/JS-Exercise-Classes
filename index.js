@@ -103,15 +103,15 @@ class Car {
 const toyota = new Car('Toyota', 20);
 
 toyota.fill(10);
-console.log('fill', toyota.tank);
-console.log('fill', toyota.odometer);
+// console.log('fill', toyota.tank);
+// console.log('fill', toyota.odometer);
 
 toyota.drive(100);
-console.log('dist one', toyota.tank);
-console.log('dist one', toyota.odometer);
-console.log('drive', toyota.drive(300));
+// console.log('dist one', toyota.tank);
+// console.log('dist one', toyota.odometer);
+// console.log('drive', toyota.drive(300));
 
-console.log('task 2', toyota);
+// console.log('task 2', toyota);
 
 
 /*
@@ -127,8 +127,24 @@ console.log('task 2', toyota);
         + {name} and {location} of course come from the instance's own properties.
 */
 class Lambdasian {
-  
+  constructor(obj){
+    this.name = obj.name;
+    this.age = obj.age;
+    this.location = obj.location;
+  }
+  speak(){
+    return `Hello my name is ${this.name}, I am from ${this.location}`
+  }
 }
+
+const student = new Lambdasian({
+  name: 'Victor',
+  age: 28,
+  location: 'USA'
+})
+
+console.log('task 3', student);
+console.log('task 3', student.speak());
 
 /*
   TASK 4
