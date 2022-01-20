@@ -137,14 +137,14 @@ class Lambdasian {
   }
 }
 
-const student = new Lambdasian({
+const studentOne = new Lambdasian({
   name: 'Victor',
   age: 28,
   location: 'USA'
 })
 
-console.log('task 3', student);
-console.log('task 3', student.speak());
+//console.log('task 3', studentOne);
+//console.log('task 3', studentOne.speak());
 
 /*
   TASK 4
@@ -160,9 +160,38 @@ console.log('task 3', student.speak());
         + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
-class Instructor {
-
+class Instructor extends Lambdasian {
+  constructor(obj){
+    super(obj);
+    this.specialty = obj.specialty;
+    this.favLanguage = obj.favLanguage;
+    this.catchPhrase = obj.catchPhrase;
+  }
+  demo(subject){
+    return `Today we are learning about ${subject}`
+  }
+  grade(student, subject){
+    return `${student} receives a perfect score on ${subject}`
+  }
 }
+
+const hemming = new Instructor({
+  name: 'Brit',
+  age: '30',
+  location: 'USA',
+  specialty: 'coding',
+  favLanguage: 'javascript',
+  catchPhrase: 'make sense?'
+});
+
+hemming.demo('python');
+console.log('demo test', hemming.demo('python'));
+
+hemming.grade('Victor', 'redux');
+console.log('grade test', hemming.grade('Victor', 'redux'));
+
+console.log('task 4', hemming);
+
 /*
   TASK 5
     - Write a Student class extending Lambdasian.
